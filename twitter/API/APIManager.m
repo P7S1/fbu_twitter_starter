@@ -7,7 +7,7 @@
 //
 
 #import "APIManager.h"
-
+#import "Tweet.h"
 static NSString * const baseURLString = @"https://api.twitter.com";
 
 @interface APIManager()
@@ -59,8 +59,11 @@ static NSString * const baseURLString = @"https://api.twitter.com";
        // Manually cache the tweets. If the request fails, restore from cache if possible.
        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:tweetDictionaries];
        [[NSUserDefaults standardUserDefaults] setValue:data forKey:@"hometimeline_tweets"];
-
-       completion(tweetDictionaries, nil);
+        
+        NSMutableArray *tweets  = [Tweet tweetsWithArray:tweetDictionaries];
+               completion(tweets, nil);
+        
+       completion(tweets, nil);
        
    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
        
@@ -72,7 +75,10 @@ static NSString * const baseURLString = @"https://api.twitter.com";
            tweetDictionaries = [NSKeyedUnarchiver unarchiveObjectWithData:data];
        }
        
-       completion(tweetDictionaries, error);
+       NSMutableArray *tweets  = [Tweet tweetsWithArray:tweetDictionaries];
+              completion(tweets, nil);
+       
+       completion(tweets, error);
    }];
 }
 
