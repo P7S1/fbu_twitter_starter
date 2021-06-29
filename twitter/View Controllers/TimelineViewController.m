@@ -15,9 +15,12 @@
 #import "UIImageView+AFNetworking.h"
 #import "ComposeViewController.h"
 @interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray<Tweet *>* tweets;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
 @property (strong, nonatomic) UIRefreshControl* refreshControl;
+
 @end
 
 @implementation TimelineViewController
@@ -27,6 +30,9 @@
     [self loadTweets];
     [self setUpTableView];
     [self setUpRefreshControl];
+    
+    self.logoutButton.target = self;
+    self.logoutButton.action = @selector(logoutButtonPressed);
 }
 
 // TimelineViewController.m

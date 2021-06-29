@@ -213,6 +213,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home Timeline" id="MOc-fV-EZE">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="p3f-f1-DIn"/>
                         <barButtonItem key="rightBarButtonItem" image="edit-icon" id="6y6-5q-3SG">
                             <connections>
                                 <segue destination="G4R-kA-wxI" kind="show" id="5yj-Gj-r8p"/>
@@ -220,6 +221,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="logoutButton" destination="p3f-f1-DIn" id="za0-oj-PzK"/>
                         <outlet property="tableView" destination="1Sd-QB-4nd" id="HjO-HR-h82"/>
                     </connections>
                 </viewController>
