@@ -20,10 +20,9 @@
     return self;
 }
 
-- (NSURL *)getUserURL{
+- (NSURL *) getUserURL{
     NSString *URLString = self.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
-    NSData *urlData = [NSData dataWithContentsOfURL:url];
     return url;
 }
 @end

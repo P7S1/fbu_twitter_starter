@@ -87,7 +87,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SXA-g9-5Z3">
-                                                    <rect key="frame" x="74" y="19" width="277" height="131"/>
+                                                    <rect key="frame" x="74" y="19" width="277" height="139"/>
                                                     <subviews>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rRs-Ty-mu6">
                                                             <rect key="frame" x="0.0" y="0.0" width="277" height="22"/>
@@ -100,25 +100,25 @@
                                                             </state>
                                                         </button>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pug-Dh-t7j">
-                                                            <rect key="frame" x="0.0" y="22" width="277" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="22" width="277" height="26"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="9Q9-LW-cB9">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="241.5" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="241.5" height="26"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X7S-Fr-ANu">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="94" height="20.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="94" height="26"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZl-7G-CIe">
-                                                                            <rect key="frame" x="98" y="0.0" width="91" height="20.5"/>
+                                                                            <rect key="frame" x="98" y="0.0" width="91" height="26"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" systemColor="secondaryLabelColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6/9/16" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAx-as-2aC">
-                                                                            <rect key="frame" x="193" y="0.0" width="48.5" height="20.5"/>
+                                                                            <rect key="frame" x="193" y="0.0" width="48.5" height="26"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" systemColor="secondaryLabelColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -135,13 +135,13 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contnet of the label goes here lalalalallalalalallalal I love to code lalalallalalala" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wab-mf-eG5">
-                                                            <rect key="frame" x="0.0" y="42.5" width="277" height="58.5"/>
+                                                            <rect key="frame" x="0.0" y="48" width="277" height="61"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="S1j-q6-O6b">
-                                                            <rect key="frame" x="0.0" y="101" width="277" height="30"/>
+                                                            <rect key="frame" x="0.0" y="109" width="277" height="30"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpp-tw-Qda">
                                                                     <rect key="frame" x="0.0" y="0.0" width="56" height="30"/>
@@ -156,6 +156,9 @@
                                                                     <state key="normal" title="193" image="retweet-icon">
                                                                         <color key="titleColor" systemColor="secondaryLabelColor"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="retweetButtonPressed:" destination="yY6-qp-ceo" eventType="touchUpInside" id="Hj3-qy-KtM"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdd-e0-Qc2">
                                                                     <rect key="frame" x="156" y="0.0" width="56" height="30"/>
@@ -163,6 +166,9 @@
                                                                     <state key="normal" title="193" image="favor-icon">
                                                                         <color key="titleColor" systemColor="secondaryLabelColor"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="likeButtonPressed:" destination="yY6-qp-ceo" eventType="touchUpInside" id="LwR-gF-kbK"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UT6-AO-gLg">
                                                                     <rect key="frame" x="247" y="0.0" width="30" height="30"/>
@@ -183,7 +189,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="SXA-g9-5Z3" secondAttribute="trailing" constant="8" id="dBQ-Bq-pQ5"/>
                                                 <constraint firstItem="SXA-g9-5Z3" firstAttribute="leading" secondItem="eMD-JC-S4h" secondAttribute="trailing" constant="8" id="drh-Ap-Plj"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="eMD-JC-S4h" secondAttribute="bottom" constant="8" id="fcd-6O-xUQ"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="SXA-g9-5Z3" secondAttribute="bottom" constant="8" id="kfs-Yo-evd"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="SXA-g9-5Z3" secondAttribute="bottom" id="kfs-Yo-evd"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

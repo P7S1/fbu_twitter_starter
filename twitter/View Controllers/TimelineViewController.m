@@ -31,6 +31,7 @@
     [self setUpTableView];
     [self setUpRefreshControl];
     
+    self.navigationController.navigationBar.prefersLargeTitles = YES;
     self.logoutButton.target = self;
     self.logoutButton.action = @selector(logoutButtonPressed);
 }
@@ -95,11 +96,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TweetTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"TweetTableViewCell"];
     Tweet* tweet = self.tweets[indexPath.row];
+    
+    cell.tweet = tweet;
+    
     cell.usernameLabel.text = [@"@" stringByAppendingString:tweet.user.screenName];
     cell.nameLabel.text = tweet.user.name;
     
     cell.profileImageView.image = nil;
-    [cell.profileImageView setImageWithURL: [tweet.user getUserURL]];
+    
+        [cell.profileImageView setImageWithURL: [tweet.user getUserURL]];
     
     cell.dateLabel.text = tweet.createdAtString;
     cell.tweetContentLabel.text = tweet.text;
@@ -107,6 +112,14 @@
     [cell.replyButton setTitle:[NSString stringWithFormat:@"%i", tweet.replyCount] forState:UIControlStateNormal];
     [cell.retweetButton setTitle:[NSString stringWithFormat:@"%i", tweet.retweetCount] forState:UIControlStateNormal];
     [cell.likeButton setTitle:[NSString stringWithFormat:@"%i", tweet.favoriteCount] forState:UIControlStateNormal];
+    
+    if (tweet.favorited){
+        UIImage* image = [UIImage imageNamed: @"favor-icon-red"];
+        [cell.likeButton setImage:image forState:UIControlStateNormal];
+    }else{
+        UIImage* image = [UIImage imageNamed: @"favor-icon"];
+        [cell.likeButton setImage:image forState:UIControlStateNormal];
+    }
     
     if (tweet.retweeted){
         [cell.retweetButton setHidden:NO];
