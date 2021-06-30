@@ -14,12 +14,16 @@
 #import "TweetTableViewCell.h"
 #import "ComposeViewController.h"
 #import "DetailViewController.h"
+#import <STPopup/STPopup.h>
 @interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray<Tweet *>* tweets;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
 @property (strong, nonatomic) UIRefreshControl* refreshControl;
+@property (weak, nonatomic) IBOutlet UIView *backgroundWhiteView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *createANewTweetButton;
+
 
 @end
 
@@ -30,19 +34,25 @@
     [self loadTweets];
     [self setUpTableView];
     [self setUpRefreshControl];
-    
-    self.navigationController.navigationBar.prefersLargeTitles = YES;
+    self.navigationController.navigationBar.tintColor = UIColor.whiteColor;
     self.logoutButton.target = self;
     self.logoutButton.action = @selector(logoutButtonPressed);
-}
+    
+    self.createANewTweetButton.target = self;
+    self.createANewTweetButton.action = @selector(newTweetButtonPressed);
+    
+    self.
+    self.backgroundWhiteView.clipsToBounds = YES;
+    self.backgroundWhiteView.layer.masksToBounds = YES;
+    self.backgroundWhiteView.layer.cornerRadius = 30;
+    
+    UIImageView* imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"twitter"]];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.navigationItem.titleView = imageView;
+    
+    [self.navigationController.navigationBar setValue:@(YES) forKeyPath:@"hidesShadow"];
 
-// TimelineViewController.m
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-   UINavigationController *navigationController = [segue destinationViewController];
-   ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
-    composeController.delegate = self;
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -91,6 +101,26 @@
     [[APIManager shared] logout];
 }
 
+-(void) newTweetButtonPressed{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ComposeViewController *composeController = [storyboard instantiateViewControllerWithIdentifier:@"ComposeViewController"];
+     composeController.delegate = self;
+    composeController.contentSizeInPopup = CGSizeMake(300, 300);
+    composeController.landscapeContentSizeInPopup = CGSizeMake(400, 200);
+    STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:composeController];
+    popupController.cornerRadius = 25;
+    
+    //UI Setup
+    [STPopupNavigationBar appearance].barTintColor = UIColor.systemTealColor;
+    [STPopupNavigationBar appearance].tintColor = [UIColor whiteColor];
+    [STPopupNavigationBar appearance].barStyle = UIBarStyleDefault;
+    [STPopupNavigationBar appearance].draggable = YES;
+    [STPopupNavigationBar appearance].titleTextAttributes = @{ NSFontAttributeName: [UIFont systemFontOfSize:18], NSForegroundColorAttributeName: [UIColor whiteColor] };
+    
+    [popupController presentInViewController:self];
+    
+}
+
 //MARK:- TableView Deleagte + Datasource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -107,6 +137,22 @@
     vc.tweet = self.tweets[indexPath.row];
     vc.cellHeight = [tableView cellForRowAtIndexPath:indexPath].frame.size.height;
     [self.navigationController pushViewController:vc animated:true];
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    //1. Define the initial state (Before the animation)
+    cell.transform = CGAffineTransformMakeTranslation(0.f, UITableViewAutomaticDimension);
+    cell.layer.shadowColor = [[UIColor blackColor]CGColor];
+    cell.layer.shadowOffset = CGSizeMake(10, 10);
+    cell.alpha = 0;
+
+    //2. Define the final state (After the animation) and commit the animation
+    [UIView beginAnimations:@"rotation" context:NULL];
+    [UIView setAnimationDuration:0.5];
+    cell.transform = CGAffineTransformMakeTranslation(0.f, 0);
+    cell.alpha = 1;
+    cell.layer.shadowOffset = CGSizeMake(0, 0);
+    [UIView commitAnimations];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

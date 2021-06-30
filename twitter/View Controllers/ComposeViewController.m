@@ -8,6 +8,7 @@
 
 #import "ComposeViewController.h"
 #import "APIManager.h"
+#import <STPopup/STPopup.h>
 @interface ComposeViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
@@ -25,6 +26,7 @@
     
     self.tweetButton.target = self;
     self.tweetButton.action = @selector(tweetButtonPressed);
+    
 }
 
 -(void)tweetButtonPressed{

@@ -8,6 +8,8 @@ target 'twitter' do
   # Pods for twitter
   pod 'AFNetworking'
   pod 'BDBOAuth1Manager'
+  pod 'pop', '~> 1.0'
+  pod 'STPopup'
 end
 
 post_install do |installer|

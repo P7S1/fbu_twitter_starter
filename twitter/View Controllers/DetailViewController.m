@@ -9,8 +9,10 @@
 #import "DetailViewController.h"
 #import "TweetTableViewCell.h"
 @interface DetailViewController ()<UITableViewDelegate, UITableViewDataSource>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray<Tweet *>* tweets;
+
 @end
 @implementation DetailViewController
 
@@ -47,7 +49,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 100;
+    return self.cellHeight + 20;
 }
 
 @end

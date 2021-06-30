@@ -107,7 +107,9 @@
         UIImage* image = [UIImage imageNamed:@"favor-icon-red"];
         [ self.likeButton setImage:image forState:UIControlStateNormal];
     }
+    
     [self.likeButton setTitle:[NSString stringWithFormat:@"%i", self.tweet.favoriteCount] forState:UIControlStateNormal];
+    
     [[APIManager shared] callActionOnTweet:self.tweet actionEndPoint:action completion:^(Tweet *tweet, NSError *error) {
         if(error){
              NSLog(@"Error favoriting tweet: %@", error.localizedDescription);

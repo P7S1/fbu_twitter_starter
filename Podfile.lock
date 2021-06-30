@@ -16,20 +16,28 @@ PODS:
     - AFNetworking/NSURLSession
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
+  - pop (1.0.12)
+  - STPopup (1.8.7)
 
 DEPENDENCIES:
   - AFNetworking
   - BDBOAuth1Manager
+  - pop (~> 1.0)
+  - STPopup
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - AFNetworking
     - BDBOAuth1Manager
+    - pop
+    - STPopup
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
+  pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
+  STPopup: a9045557bc48a0df51fbb7bf0544447c5fe84d34
 
-PODFILE CHECKSUM: a441256d54093b916e309cb7bdeecd00b6cf713a
+PODFILE CHECKSUM: ea9c3d3a940914795ceffdf966b0164bba4fd57b
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.10.1
