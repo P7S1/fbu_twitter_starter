@@ -16,12 +16,14 @@ PODS:
     - AFNetworking/NSURLSession
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
+  - DateTools (2.0.0)
   - pop (1.0.12)
   - STPopup (1.8.7)
 
 DEPENDENCIES:
   - AFNetworking
   - BDBOAuth1Manager
+  - DateTools
   - pop (~> 1.0)
   - STPopup
 
@@ -29,15 +31,17 @@ SPEC REPOS:
   trunk:
     - AFNetworking
     - BDBOAuth1Manager
+    - DateTools
     - pop
     - STPopup
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
+  DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   STPopup: a9045557bc48a0df51fbb7bf0544447c5fe84d34
 
-PODFILE CHECKSUM: ea9c3d3a940914795ceffdf966b0164bba4fd57b
+PODFILE CHECKSUM: 9711d61e86bf47b65977742059f010811dfb87cd
 
 COCOAPODS: 1.10.1

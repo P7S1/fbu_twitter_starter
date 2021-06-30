@@ -41,7 +41,6 @@
     self.createANewTweetButton.target = self;
     self.createANewTweetButton.action = @selector(newTweetButtonPressed);
     
-    self.
     self.backgroundWhiteView.clipsToBounds = YES;
     self.backgroundWhiteView.layer.masksToBounds = YES;
     self.backgroundWhiteView.layer.cornerRadius = 30;

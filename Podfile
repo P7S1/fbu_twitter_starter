@@ -10,6 +10,7 @@ target 'twitter' do
   pod 'BDBOAuth1Manager'
   pod 'pop', '~> 1.0'
   pod 'STPopup'
+  pod 'DateTools'
 end
 
 post_install do |installer|
