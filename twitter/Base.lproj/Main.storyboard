@@ -235,6 +235,37 @@
             </objects>
             <point key="canvasLocation" x="1660" y="36.431784107946029"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="9Oa-Wb-tKi">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="kfy-LD-w1C" customClass="DetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b0H-vc-WBN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zbh-LV-2N2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4vS-Lr-rjM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zbh-LV-2N2" firstAttribute="top" secondItem="b0H-vc-WBN" secondAttribute="top" id="048-MC-whf"/>
+                            <constraint firstAttribute="trailing" secondItem="zbh-LV-2N2" secondAttribute="trailing" id="Fac-LN-cCG"/>
+                            <constraint firstItem="zbh-LV-2N2" firstAttribute="leading" secondItem="b0H-vc-WBN" secondAttribute="leading" id="qgf-gD-9v3"/>
+                            <constraint firstAttribute="bottom" secondItem="zbh-LV-2N2" secondAttribute="bottom" id="zyw-m0-u7T"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="xVq-hH-Z6f"/>
+                    <connections>
+                        <outlet property="tableView" destination="zbh-LV-2N2" id="RwC-I1-ZVf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AAJ-ei-8ox" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2349.5999999999999" y="77.811094452773617"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="WUT-Ke-VeR">
             <objects>

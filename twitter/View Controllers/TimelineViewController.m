@@ -12,8 +12,8 @@
 #import "LoginViewController.h"
 #import "Tweet.h"
 #import "TweetTableViewCell.h"
-#import "UIImageView+AFNetworking.h"
 #import "ComposeViewController.h"
+#import "DetailViewController.h"
 @interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -96,43 +96,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TweetTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"TweetTableViewCell"];
     Tweet* tweet = self.tweets[indexPath.row];
-    
-    cell.tweet = tweet;
-    
-    cell.usernameLabel.text = [@"@" stringByAppendingString:tweet.user.screenName];
-    cell.nameLabel.text = tweet.user.name;
-    
-    cell.profileImageView.image = nil;
-    
-        [cell.profileImageView setImageWithURL: [tweet.user getUserURL]];
-    
-    cell.dateLabel.text = tweet.createdAtString;
-    cell.tweetContentLabel.text = tweet.text;
-    
-    [cell.replyButton setTitle:[NSString stringWithFormat:@"%i", tweet.replyCount] forState:UIControlStateNormal];
-    [cell.retweetButton setTitle:[NSString stringWithFormat:@"%i", tweet.retweetCount] forState:UIControlStateNormal];
-    [cell.likeButton setTitle:[NSString stringWithFormat:@"%i", tweet.favoriteCount] forState:UIControlStateNormal];
-    
-    if (tweet.favorited){
-        UIImage* image = [UIImage imageNamed: @"favor-icon-red"];
-        [cell.likeButton setImage:image forState:UIControlStateNormal];
-    }else{
-        UIImage* image = [UIImage imageNamed: @"favor-icon"];
-        [cell.likeButton setImage:image forState:UIControlStateNormal];
-    }
-    
-    if (tweet.retweeted){
-        [cell.retweetButton setHidden:NO];
-        [cell.retweetButton setTitle:tweet.retweetedByUser.name forState:UIControlStateNormal];
-    }else{
-        [cell.retweetedByButton setHidden:YES];
-    }
-
+    [cell setUpFromTweet:tweet];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UIStoryboard *storybaord = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    DetailViewController *vc = [storybaord instantiateViewControllerWithIdentifier:@"DetailViewController"];
+    vc.tweet = self.tweets[indexPath.row];
+    [self.navigationController pushViewController:vc animated:true];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

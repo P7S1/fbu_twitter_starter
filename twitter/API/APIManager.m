@@ -98,25 +98,30 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 
 
 - (void)callActionOnTweet:(Tweet *)tweet actionEndPoint:(TweetActionEndpoint)action completion:(void (^)(Tweet *, NSError *))completion{
-
-    NSString *urlString = [self getTweetActionEndPoint:action];
+    NSString *urlString = [self getTweetActionEndPoint:action forTweet:tweet];
     NSDictionary *parameters = @{@"id": tweet.idStr};
+    
+    
     [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
         Tweet *tweet = [[Tweet alloc]initWithDictionary:tweetDictionary];
+        
+        
         completion(tweet, nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         completion(nil, error);
     }];
 }
 
--(NSString*)getTweetActionEndPoint: (TweetActionEndpoint)action {
+-(NSString*)getTweetActionEndPoint: (TweetActionEndpoint)action forTweet: (Tweet*)tweet {
     switch (action) {
         case unlike:
             return @"1.1/favorites/destroy.json";
         case like:
             return @"1.1/favorites/create.json";
         case retweet:
-            return @"1.1/statuses/retweet/:id.json";
+            return [[@"1.1/statuses/retweet/" stringByAppendingString:tweet.idStr] stringByAppendingString:@".json"];
+        case unretweet:
+            return [[@"1.1/statuses/unretweet/" stringByAppendingString:tweet.idStr] stringByAppendingString:@".json"];
     }
 }
 

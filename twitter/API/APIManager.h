@@ -12,7 +12,8 @@
 typedef enum {
     unlike,
     like,
-    retweet
+    retweet,
+    unretweet
 } TweetActionEndpoint;
 
 @interface APIManager : BDBOAuth1SessionManager
