@@ -17,6 +17,7 @@
 		6AD278F620BCB68B0085BC29 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD278F520BCB68B0085BC29 /* APIManager.m */; };
 		6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD2790520BCC0380085BC29 /* LoginViewController.m */; };
 		6AD2790920BCC04D0085BC29 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD2790820BCC04D0085BC29 /* TimelineViewController.m */; };
+		DF550E82268D35DB00B9056D /* TweetReply.m in Sources */ = {isa = PBXBuildFile; fileRef = DF550E81268D35DB00B9056D /* TweetReply.m */; };
 		DF75E790268BAF6100BE95EB /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF75E78F268BAF6100BE95EB /* ComposeViewController.m */; };
 		DF75E795268CA73500BE95EB /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF75E794268CA73500BE95EB /* DetailViewController.m */; };
 		DF75E79A268CBA3200BE95EB /* TweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF75E798268CBA3200BE95EB /* TweetTableViewCell.xib */; };
@@ -47,6 +48,8 @@
 		6AD2790820BCC04D0085BC29 /* TimelineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 		75895B6507775E8AFBEEA2D9 /* Pods-twitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-twitter/Pods-twitter.debug.xcconfig"; sourceTree = "<group>"; };
 		DF550E80268D185100B9056D /* UIView+View.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+View.h"; sourceTree = "<group>"; };
+		DF550E81268D35DB00B9056D /* TweetReply.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetReply.m; sourceTree = "<group>"; };
+		DF550E83268D35E700B9056D /* TweetReply.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetReply.h; sourceTree = "<group>"; };
 		DF75E78E268BAF6100BE95EB /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
 		DF75E78F268BAF6100BE95EB /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		DF75E793268CA73500BE95EB /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -137,6 +140,8 @@
 				DF8A2DE3268A6E0900BADCD4 /* User.m */,
 				DF8A2DE5268A6E8300BADCD4 /* Tweet.h */,
 				DF8A2DE6268A6E8300BADCD4 /* Tweet.m */,
+				DF550E83268D35E700B9056D /* TweetReply.h */,
+				DF550E81268D35DB00B9056D /* TweetReply.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -299,6 +304,7 @@
 				DF8A2DE4268A6E0900BADCD4 /* User.m in Sources */,
 				6AD278E820BC4B970085BC29 /* main.m in Sources */,
 				DF75E790268BAF6100BE95EB /* ComposeViewController.m in Sources */,
+				DF550E82268D35DB00B9056D /* TweetReply.m in Sources */,
 				DF8A2DE7268A6E8300BADCD4 /* Tweet.m in Sources */,
 				6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */,
 				DF8A2DEA268A788300BADCD4 /* TweetTableViewCell.m in Sources */,

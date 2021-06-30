@@ -21,7 +21,15 @@ typedef enum {
 + (instancetype)shared;
 
 - (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion;
+
+- (void)fetchTweetsWithEnpoint: (NSString*) endpoint withCompletionHandler:(void(^)(NSArray *tweets, NSError *error))completion;
+
 - (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion;
 - (void)callActionOnTweet:(Tweet *)tweet actionEndPoint:(TweetActionEndpoint)action completion:(void (^)(Tweet *, NSError *))completion;
+
+- (void)getTweetsMentioningUser: (NSString*) userId withCompletionHandler:(void(^)(NSArray *tweets, NSError *error))completion;
+
 - (NSString*)getTweetActionEndPoint: (TweetActionEndpoint)action;
+
+
 @end

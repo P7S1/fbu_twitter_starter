@@ -51,9 +51,8 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     return self;
 }
 
-- (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion {
-    
-    [self GET:@"1.1/statuses/home_timeline.json"
+- (void)fetchTweetsWithEnpoint:(NSString *)endpoint withCompletionHandler:(void (^)(NSArray *, NSError *))completion{
+    [self GET:endpoint
    parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
        // Manually cache the tweets. If the request fails, restore from cache if possible.
        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:tweetDictionaries];
@@ -79,6 +78,23 @@ static NSString * const baseURLString = @"https://api.twitter.com";
        
        completion(tweets, error);
    }];
+    
+}
+
+- (void)getTweetsMentioningUser:(NSString *)userId withCompletionHandler:(void (^)(NSArray *, NSError *))completion{
+    NSString* endpoint = [[@"https://api.twitter.com/2/users/" stringByAppendingString:userId] stringByAppendingString:@"/mentions"];
+    
+    [APIManager.shared fetchTweetsWithEnpoint:endpoint withCompletionHandler:^(NSArray *tweets, NSError *error) {
+        completion(tweets, error);
+    }];
+}
+
+
+- (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion {
+    NSString* endpoint = @"1.1/statuses/home_timeline.json";
+    [APIManager.shared fetchTweetsWithEnpoint:endpoint withCompletionHandler:^(NSArray *tweets, NSError *error) {
+            completion(tweets,error);;
+    }];
 }
 
 // APIManager.m

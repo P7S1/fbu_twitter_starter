@@ -58,8 +58,6 @@
 }
 
 -(void) loadTweets{
-    [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
-            // Get timeline
             [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
                 if (tweets) {
                     NSLog(@"😎😎😎 Successfully loaded home timeline");
@@ -76,7 +74,7 @@
                     NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
                 }
             }];
-    }];
+
 }
 
 -(void) setUpTableView{

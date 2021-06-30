@@ -8,10 +8,11 @@
 
 #import "DetailViewController.h"
 #import "TweetTableViewCell.h"
+#import "APIManager.h"
 @interface DetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray<Tweet *>* tweets;
+@property (nonatomic, strong) NSArray<Tweet *>* tweets;
 
 @end
 @implementation DetailViewController
@@ -20,11 +21,31 @@
     [super viewDidLoad];
     self.tweets = [[NSMutableArray<Tweet*> alloc]init];
     [self setUpTableView];
+    [self loadTweets];
 }
 
 -(void)setUpTableView{
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+}
+
+-(void) loadTweets{
+    [[APIManager shared] getTweetsMentioningUser:self.tweet.user.userId withCompletionHandler:^(NSArray *tweets, NSError *error) {
+        if (tweets) {
+            NSLog(@"😎😎😎 Successfully loaded home timeline");
+            //for (NSDictionary *dictionary in tweets) {
+                //NSString *text = dictionary[@"text"];
+                //NSLog(@"%@", text);
+            //}
+            self.tweets = tweets;
+            [self.tableView reloadData];
+//                    if (self.refreshControl.refreshing){
+//                        [self.refreshControl endRefreshing];
+//                    }
+        } else {
+            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+        }
+    }];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -49,7 +70,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return self.cellHeight + 20;
+    return UITableViewAutomaticDimension;
 }
 
 @end
