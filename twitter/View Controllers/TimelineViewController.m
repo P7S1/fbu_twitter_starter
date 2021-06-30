@@ -105,6 +105,7 @@
     UIStoryboard *storybaord = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     DetailViewController *vc = [storybaord instantiateViewControllerWithIdentifier:@"DetailViewController"];
     vc.tweet = self.tweets[indexPath.row];
+    vc.cellHeight = [tableView cellForRowAtIndexPath:indexPath].frame.size.height;
     [self.navigationController pushViewController:vc animated:true];
 }
 
