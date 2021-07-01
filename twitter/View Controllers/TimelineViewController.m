@@ -50,6 +50,13 @@
     self.navigationItem.titleView = imageView;
     
     [self.navigationController.navigationBar setValue:@(YES) forKeyPath:@"hidesShadow"];
+    
+    //UI Setup
+    [STPopupNavigationBar appearance].barTintColor = UIColor.systemTealColor;
+    [STPopupNavigationBar appearance].tintColor = [UIColor whiteColor];
+    [STPopupNavigationBar appearance].barStyle = UIBarStyleDefault;
+    [STPopupNavigationBar appearance].draggable = YES;
+    [STPopupNavigationBar appearance].titleTextAttributes = @{ NSFontAttributeName: [UIFont systemFontOfSize:18], NSForegroundColorAttributeName: [UIColor whiteColor] };
 
 }
 - (void)didReceiveMemoryWarning {
@@ -107,13 +114,6 @@
     STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:composeController];
     popupController.cornerRadius = 25;
     
-    //UI Setup
-    [STPopupNavigationBar appearance].barTintColor = UIColor.systemTealColor;
-    [STPopupNavigationBar appearance].tintColor = [UIColor whiteColor];
-    [STPopupNavigationBar appearance].barStyle = UIBarStyleDefault;
-    [STPopupNavigationBar appearance].draggable = YES;
-    [STPopupNavigationBar appearance].titleTextAttributes = @{ NSFontAttributeName: [UIFont systemFontOfSize:18], NSForegroundColorAttributeName: [UIColor whiteColor] };
-    
     [popupController presentInViewController:self];
     
 }
@@ -132,8 +132,13 @@
     UIStoryboard *storybaord = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     DetailViewController *vc = [storybaord instantiateViewControllerWithIdentifier:@"DetailViewController"];
     vc.tweet = self.tweets[indexPath.row];
-    vc.cellHeight = [tableView cellForRowAtIndexPath:indexPath].frame.size.height;
-    [self.navigationController pushViewController:vc animated:true];
+    CGFloat cellHeight = [tableView cellForRowAtIndexPath:indexPath].frame.size.height;
+    vc.contentSizeInPopup = CGSizeMake(self.view.frame.size.width-32, cellHeight + 32);
+    vc.landscapeContentSizeInPopup = CGSizeMake(400, 200);
+    STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:vc];
+    popupController.cornerRadius = 25;
+    popupController.navigationBar.backgroundColor = UIColor.systemBackgroundColor;
+    [popupController presentInViewController:self];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{

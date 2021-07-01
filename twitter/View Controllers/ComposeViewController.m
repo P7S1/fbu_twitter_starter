@@ -27,6 +27,11 @@
     self.tweetButton.target = self;
     self.tweetButton.action = @selector(tweetButtonPressed);
     
+    self.imageView.layer.cornerRadius = self.imageView.frame.size.height/2;
+    self.textView.layer.cornerRadius = 25;
+    
+    self.textView.contentInset = UIEdgeInsetsMake(8, 8, 8, 8);
+    
 }
 
 -(void)tweetButtonPressed{
