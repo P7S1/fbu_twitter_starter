@@ -52,8 +52,11 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 }
 
 - (void)fetchTweetsWithEnpoint:(NSString *)endpoint withCompletionHandler:(void (^)(NSArray *, NSError *))completion{
+    
+    NSDictionary *parameters = @{@"tweet_mode":@"extended"};
+    
     [self GET:endpoint
-   parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
+   parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
        // Manually cache the tweets. If the request fails, restore from cache if possible.
        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:tweetDictionaries];
        [[NSUserDefaults standardUserDefaults] setValue:data forKey:@"hometimeline_tweets"];

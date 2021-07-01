@@ -9,68 +9,86 @@
 #import "DetailViewController.h"
 #import "TweetTableViewCell.h"
 #import "APIManager.h"
-@interface DetailViewController ()<UITableViewDelegate, UITableViewDataSource>
+#import "UIImageView+AFNetworking.h"
+@interface DetailViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *tweetMediaImageView;
+@property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray<Tweet *>* tweets;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *tweetContnetLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *retweetedByButton;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mediaImageViewHeightAnchor;
+
 
 @end
 @implementation DetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tweets = [[NSMutableArray<Tweet*> alloc]init];
-    [self setUpTableView];
-    //[self loadTweets];
+    [self setUpViewFromTweet];
+    
 }
 
--(void)setUpTableView{
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-}
-
--(void) loadTweets{
-    [[APIManager shared] getTweetsMentioningUser:self.tweet.user.userId withCompletionHandler:^(NSArray *tweets, NSError *error) {
-        if (tweets) {
-            NSLog(@"😎😎😎 Successfully loaded home timeline");
-            //for (NSDictionary *dictionary in tweets) {
-                //NSString *text = dictionary[@"text"];
-                //NSLog(@"%@", text);
-            //}
-            self.tweets = tweets;
-            [self.tableView reloadData];
-//                    if (self.refreshControl.refreshing){
-//                        [self.refreshControl endRefreshing];
-//                    }
-        } else {
-            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
-        }
-    }];
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    TweetTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetTableViewCell"];
-    [cell setUpFromTweet:self.tweet];
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return self.cellHeight;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    TweetTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetTableViewCell"];
-    Tweet *tweet = self.tweets[indexPath.row];
-    [cell setUpFromTweet:tweet];
-    return cell;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.tweets.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return UITableViewAutomaticDimension;
+-(void)setUpViewFromTweet{
+    // Initialization code
+    self.tweetMediaImageView.layer.cornerRadius = 30;
+    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height/2;
+    
+    Tweet* tweet = self.tweet;
+    
+    self.usernameLabel.text = [@"@" stringByAppendingString:tweet.user.screenName];
+    self.nameLabel.text = tweet.user.name;
+    
+    self.profileImageView.image = nil;
+    
+        [self.profileImageView setImageWithURL: [tweet.user getUserURL]];
+    
+    self.dateLabel.text = tweet.createdAtString;
+    self.tweetContnetLabel.text = tweet.text;
+    
+    [self.retweetButton setTitle:[NSString stringWithFormat:@"%i", tweet.retweetCount] forState:UIControlStateNormal];
+    [self.likeButton setTitle:[NSString stringWithFormat:@"%i", tweet.favoriteCount] forState:UIControlStateNormal];
+    
+    if (tweet.favorited){
+        UIImage* image = [UIImage imageNamed: @"favor-icon-red"];
+        [self.likeButton setImage:image forState:UIControlStateNormal];
+    }else{
+        UIImage* image = [UIImage imageNamed: @"favor-icon"];
+        [self.likeButton setImage:image forState:UIControlStateNormal];
+    }
+    
+    if (tweet.retweetedByUser != nil){
+        [self.retweetedByButton setHidden:NO];
+        [self.retweetedByButton setTitle:[@"Retweeted by @" stringByAppendingString:tweet.retweetedByUser.name] forState:UIControlStateNormal];
+    }else{
+        [self.retweetedByButton setHidden:YES];
+    }
+    
+    if (tweet.retweeted){
+        UIImage* image = [UIImage imageNamed:@"retweet-icon-green"];
+        [self.retweetButton setImage:image forState:UIControlStateNormal];
+    }else{
+        UIImage* image = [UIImage imageNamed:@"retweet-icon"];
+        [self.retweetButton setImage:image forState:UIControlStateNormal];
+    }
+    
+    if (tweet.tweetMediaURL != nil){
+        [self.tweetMediaImageView setHidden:NO];
+        [self.tweetMediaImageView setImageWithURL:tweet.tweetMediaURL];
+    }else{
+        [self.tweetMediaImageView setHidden:YES];
+        self.tweetMediaImageView.image = nil;
+    }
+    
+    self.mediaImageViewHeightAnchor.constant = self.tweetMediaImageView.frame.size.width * tweet.mediaAspectRatio;
 }
 
 @end
