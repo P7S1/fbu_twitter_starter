@@ -34,6 +34,14 @@
         NSDictionary *user = dictionary[@"user"];
         self.user = [[User alloc] initWithDictionary:user];
         
+        NSString* mediaURLString = dictionary[@"entities"][@"media"][0][@"media_url_https"];
+        
+        if (mediaURLString != nil){
+            self.tweetMediaURL = [[NSURL alloc]initWithString:mediaURLString];
+        }
+        
+        
+        
         // Format createdAt date string
         NSString *createdAtOriginalString = dictionary[@"created_at"];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

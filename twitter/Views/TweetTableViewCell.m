@@ -58,6 +58,14 @@
         UIImage* image = [UIImage imageNamed:@"retweet-icon"];
         [self.retweetButton setImage:image forState:UIControlStateNormal];
     }
+    
+    if (tweet.tweetMediaURL != nil){
+        [self.tweetMediaImageView setHidden:NO];
+        [self.tweetMediaImageView setImageWithURL:tweet.tweetMediaURL];
+    }else{
+        [self.tweetMediaImageView setHidden:YES];
+        self.tweetMediaImageView.image = nil;
+    }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
