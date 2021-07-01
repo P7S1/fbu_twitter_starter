@@ -68,7 +68,6 @@
 
 - (IBAction)retweetButtonPressed:(id)sender {
     
-    [self.retweetButton spin];
     TweetActionEndpoint action;
     if (self.tweet.retweeted){
         self.tweet.retweeted = NO;

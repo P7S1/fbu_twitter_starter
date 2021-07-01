@@ -21,7 +21,7 @@
     [super viewDidLoad];
     self.tweets = [[NSMutableArray<Tweet*> alloc]init];
     [self setUpTableView];
-    [self loadTweets];
+    //[self loadTweets];
 }
 
 -(void)setUpTableView{
