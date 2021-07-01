@@ -10,7 +10,6 @@
 #import "APIManager.h"
 #import "Tweet.h"
 #import "UIImageView+AFNetworking.h"
-#import "UIView+View.h"
 @implementation TweetTableViewCell
 
 - (void)awakeFromNib {
@@ -67,7 +66,6 @@
 }
 
 - (IBAction)retweetButtonPressed:(id)sender {
-    
     TweetActionEndpoint action;
     if (self.tweet.retweeted){
         self.tweet.retweeted = NO;

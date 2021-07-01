@@ -137,18 +137,17 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-//    //1. Define the initial state (Before the animation)
-//    cell.transform = CGAffineTransformMakeTranslation(0.f, UITableViewAutomaticDimension);
-//    cell.layer.shadowColor = [[UIColor blackColor]CGColor];
-//    cell.layer.shadowOffset = CGSizeMake(10, 10);
-//    cell.alpha = 0;
-//
-//    //2. Define the final state (After the animation) and commit the animation
-//    [UIView animateWithDuration:0.5 animations:^{
-//        cell.transform = CGAffineTransformMakeTranslation(0.f, 0);
-//        cell.alpha = 1;
-//        cell.layer.shadowOffset = CGSizeMake(0, 0);
-//    }];
+    //1. Define the initial state (Before the animation)
+     cell.layer.shadowColor = [[UIColor blackColor]CGColor];
+     cell.layer.shadowOffset = CGSizeMake(10, 10);
+     cell.alpha = 0;
+
+     //2. Define the final state (After the animation) and commit the animation
+     [UIView beginAnimations:@"rotation" context:NULL];
+     [UIView setAnimationDuration:0.5];
+     cell.alpha = 1;
+     cell.layer.shadowOffset = CGSizeMake(0, 0);
+     [UIView commitAnimations];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

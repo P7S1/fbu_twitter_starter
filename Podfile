@@ -8,7 +8,6 @@ target 'twitter' do
   # Pods for twitter
   pod 'AFNetworking'
   pod 'BDBOAuth1Manager'
-  pod 'pop', '~> 1.0'
   pod 'STPopup'
   pod 'DateTools'
 end
