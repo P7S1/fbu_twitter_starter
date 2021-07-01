@@ -30,6 +30,7 @@
         self.retweeted = [dictionary[@"retweeted"] boolValue];
         self.replyCount = [dictionary[@"reply_count"] intValue];
         
+        
         // initialize user
         NSDictionary *user = dictionary[@"user"];
         self.user = [[User alloc] initWithDictionary:user];
@@ -38,8 +39,15 @@
         
         if (mediaURLString != nil){
             self.tweetMediaURL = [[NSURL alloc]initWithString:mediaURLString];
+            double width = [dictionary[@"entities"][@"media"][0][@"sizes"][@"large"][@"w"] longValue];
+            double height = [dictionary[@"entities"][@"media"][0][@"sizes"][@"large"][@"h"] longValue];
+            
+            self.mediaAspectRatio = height/width;
+        }else{
+            self.mediaAspectRatio = 1;
         }
-        
+        if (self.mediaAspectRatio < 0.5){ self.mediaAspectRatio = 0.5; }
+        if (self.mediaAspectRatio > 1.5) { self.mediaAspectRatio = 1.5; }
         
         
         // Format createdAt date string

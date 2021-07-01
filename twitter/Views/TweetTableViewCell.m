@@ -66,6 +66,8 @@
         [self.tweetMediaImageView setHidden:YES];
         self.tweetMediaImageView.image = nil;
     }
+    
+    self.mediaImageViewHeightAnchor.constant = self.tweetMediaImageView.frame.size.width * tweet.mediaAspectRatio;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

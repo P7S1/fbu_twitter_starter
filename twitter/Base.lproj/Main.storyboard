@@ -188,10 +188,13 @@
                                                             <rect key="frame" x="0.0" y="163.33333333333337" width="326" height="326"/>
                                                             <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" secondItem="XxK-TL-KbI" secondAttribute="height" multiplier="1:1" id="GF7-gw-cdJ"/>
+                                                                <constraint firstAttribute="height" constant="326" id="vt0-yZ-fLS"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="XxK-TL-KbI" firstAttribute="width" secondItem="bTi-J6-yjx" secondAttribute="width" id="Rff-2z-NBH"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
@@ -208,6 +211,7 @@
                                         <connections>
                                             <outlet property="dateLabel" destination="jRG-VR-JYD" id="7r7-5U-CJt"/>
                                             <outlet property="likeButton" destination="g1X-Vi-3J4" id="NrJ-td-hQ0"/>
+                                            <outlet property="mediaImageViewHeightAnchor" destination="vt0-yZ-fLS" id="Sog-ZA-v1X"/>
                                             <outlet property="messageButton" destination="WbF-1z-7ud" id="6sJ-Yj-dk5"/>
                                             <outlet property="nameLabel" destination="rlU-LV-SRE" id="rUT-PQ-oDZ"/>
                                             <outlet property="profileImageView" destination="kiD-hA-ujB" id="oGN-g1-AE3"/>

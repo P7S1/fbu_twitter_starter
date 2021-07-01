@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "User.h"
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *createdAtString; // Display date
 @property (nonatomic) int replyCount;
 @property (nonatomic, strong) NSURL* _Nullable tweetMediaURL;
-
+@property (nonatomic) CGFloat mediaAspectRatio;
 // For Retweets
 @property (nonatomic, strong) User *retweetedByUser;  // user who retweeted if tweet is retweet
 
