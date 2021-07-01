@@ -10,11 +10,13 @@
 #import "APIManager.h"
 #import "Tweet.h"
 #import "UIImageView+AFNetworking.h"
+#import "UIView+View.h"
 @implementation TweetTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.tweetMediaImageView.layer.cornerRadius = 30;
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height/2;
 }
 
@@ -65,6 +67,8 @@
 }
 
 - (IBAction)retweetButtonPressed:(id)sender {
+    
+    [self.retweetButton spin];
     TweetActionEndpoint action;
     if (self.tweet.retweeted){
         self.tweet.retweeted = NO;

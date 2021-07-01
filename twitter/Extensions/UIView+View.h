@@ -20,7 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 @implementation UIView
 
 -(void) spin{
-    
+    [UIView animateWithDuration:0.3 animations:^{
+            self.transform = CGAffineTransformMakeRotation(M_PI/2);
+        }];
 }
 
 @end

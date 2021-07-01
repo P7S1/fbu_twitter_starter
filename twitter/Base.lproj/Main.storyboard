@@ -77,10 +77,10 @@
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TweetTableViewCell" id="ncP-r2-iWH" customClass="TweetTableViewCell">
-                                        <rect key="frame" x="0.0" y="24.333333969116211" width="428" height="193.33332824707031"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="428" height="519.33331298828125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ncP-r2-iWH" id="QGg-YC-Y1C">
-                                            <rect key="frame" x="0.0" y="0.0" width="428" height="193.33332824707031"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="428" height="519.33331298828125"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kiD-hA-ujB">
@@ -92,7 +92,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bTi-J6-yjx">
-                                                    <rect key="frame" x="74" y="19" width="326" height="163.33333333333334"/>
+                                                    <rect key="frame" x="74" y="18.999999999999972" width="326" height="489.33333333333326"/>
                                                     <subviews>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMh-eC-D7h">
                                                             <rect key="frame" x="0.0" y="0.0" width="326" height="22"/>
@@ -184,6 +184,13 @@
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XxK-TL-KbI">
+                                                            <rect key="frame" x="0.0" y="163.33333333333337" width="326" height="326"/>
+                                                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="XxK-TL-KbI" secondAttribute="height" multiplier="1:1" id="GF7-gw-cdJ"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -209,6 +216,7 @@
                                             <outlet property="retweetedByButton" destination="IMh-eC-D7h" id="cpo-Xg-2ll"/>
                                             <outlet property="tweetContentLabel" destination="062-Jk-oF6" id="EoO-FX-kMQ"/>
                                             <outlet property="tweetImageView" destination="kiD-hA-ujB" id="wef-yS-a1N"/>
+                                            <outlet property="tweetMediaImageView" destination="XxK-TL-KbI" id="M0k-lP-PPk"/>
                                             <outlet property="usernameLabel" destination="fFk-S7-fCG" id="Tza-Ud-VKs"/>
                                         </connections>
                                     </tableViewCell>
