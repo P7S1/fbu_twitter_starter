@@ -51,14 +51,14 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
-![](https://i.imgur.com/UIPUYaN.gif)
+Here's a walkthrough of implemented user stories (gifs were too large to load):
+[GIF 1](https://i.imgur.com/UIPUYaN.gif)
 
 
-![](https://i.imgur.com/rrO469U.gif)
+[GIF 2](https://i.imgur.com/rrO469U.gif)
 
 
-![](https://i.imgur.com/4V94qZz.gif)
+[GIF 3](https://i.imgur.com/4V94qZz.gif)
 
 
 
