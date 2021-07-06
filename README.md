@@ -61,6 +61,9 @@ Here's a walkthrough of implemented user stories (gifs were too large to load):
 [GIF 3](https://i.imgur.com/4V94qZz.gif)
 
 
+Styled lockscreen + details page!!!
+[GIF 4](https://i.imgur.com/ymU47Vn.gif)
+
 
 ## Notes
 
