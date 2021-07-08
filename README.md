@@ -44,6 +44,12 @@ The following **additional** features are implemented:
 
 - [x] Tweet image aspect ratio adjusts to fit'
 
+The following **additional but I forgot to mention** features are implemented:
+- [x] Tweet logo is in navigation bar
+- [x] Details page/Compose tweet animates modally in/out
+- [x] UINavigationBar Large titles appears/disappears in the home page 
+- [x] Rounded corners on tableview and profile imageView 
+
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
 1. Most efficient way to get current user profile/id
